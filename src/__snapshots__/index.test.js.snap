@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders the app to the DOM 1`] = `
+Array [
+  <App />,
+  "app",
+]
+`;
