@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as THREE from 'three'
 import { RenderPass, EffectComposer, SMAAPass } from 'postprocessing'
+import * as OIMO from 'oimo'
 
 const frameRate = 60
 const timeout = 1000 / frameRate
@@ -153,6 +154,8 @@ export default class RubixCube extends Component {
     })
 
     this.blocks = newBlocksSetup
+    this.sectionRotation = null
+    if (this.rotationsTracker.length < 1) this.usePhysics = true
   }
 
   getRandomSectionToRotate () {
@@ -195,8 +198,6 @@ export default class RubixCube extends Component {
   }
 
   chooseSectionToRotate () {
-    if (this.rotationsTracker.length > 30) this.isSolving = true
-    if (this.isSolving === true && this.rotationsTracker.length === 0) this.isSolving = false
     this.sectionRotation = this.getNextSectionToRotate()
     this.trackRotation(this.sectionRotation)
     this.rotations++
@@ -214,21 +215,17 @@ export default class RubixCube extends Component {
       : THREE.Math.degToRad(rotations * 90) - block.rotation[axis]
   }
 
-  // obj - your object (THREE.Object3D or derived)
-  // point - the point of rotation (THREE.Vector3)
-  // axis - the axis of rotation (normalized THREE.Vector3)
-  // theta - radian value of rotation
   rotateAboutPoint (obj, point, axis, theta) {
-    obj.position.sub(point) // remove the offset
-    obj.position.applyAxisAngle(axis, theta) // rotate the POSITION
-    obj.position.add(point) // re-add the offset
-    obj.rotateOnAxis(axis, theta) // rotate the OBJECT
+    obj.position.sub(point)
+    obj.position.applyAxisAngle(axis, theta)
+    obj.position.add(point)
+    obj.rotateOnAxis(axis, theta)
   }
 
   rotateSection () {
     if (!this.sectionRotation) this.chooseSectionToRotate()
     const blocks = this.sectionRotation.blocksToRotate
-    const rotation = THREE.Math.degToRad(8)
+    const rotation = THREE.Math.degToRad(this.rotationIncrement)
     const rightAngle = THREE.Math.degToRad(90)
     let done = false
     if (this.sectionRotation.currentAngle + rotation >= rightAngle) {
@@ -261,8 +258,130 @@ export default class RubixCube extends Component {
     this.sectionRotation.currentAngle += rotation
     if (done) {
       this.resetBlocks()
-      this.sectionRotation = null
     }
+  }
+
+  getMeshBoxSize (mesh) {
+    mesh.geometry.computeBoundingBox()
+    const { min, max } = mesh.geometry.boundingBox
+    return [
+      max.x - min.x,
+      max.y - min.y,
+      max.z - min.z
+    ]
+  }
+
+  setupRigidBodies () {
+    this.floor.geometry.computeBoundingBox()
+    this.rigidBodies = [
+      {
+        id: 'floor',
+        mesh: this.floor,
+        body: this.world.add({
+          type: 'box',
+          size: this.getMeshBoxSize(this.floor), // size of shape
+          pos: this.floor.position.toArray(), // start position in degree
+          rot: this.floor.rotation.toArray().map(v => v * 180 / Math.PI), // start rotation in degree
+          move: false, // dynamic or statique
+          density: 1,
+          friction: 0.2,
+          restitution: 0.2,
+          belongsTo: 1 << 0, // The bits of the collision groups to which the shape belongs.
+          collidesWith: 0xffffffff // The bits of the collision groups with which the shape collides.
+        })
+      }
+    ]
+
+    this.blocks.forEach((rows, zIndex) => {
+      rows.forEach((row, yIndex) => {
+        row.forEach((block, xIndex) => {
+          this.rigidBodies.push({
+            id: `block_[${xIndex},${yIndex},${zIndex}]`,
+            mesh: block,
+            positionsTracker: [
+              [ block.position.toArray(), block.quaternion.toArray() ]
+            ],
+            body: this.world.add({
+              type: 'box',
+              size: this.getMeshBoxSize(block), // size of shape
+              pos: block.position.toArray(), // start position in degree
+              rot: block.rotation.toArray().map(v => v * 180 / Math.PI), // start rotation in degree
+              move: true, // dynamic or statique
+              density: 1,
+              friction: 0.3,
+              restitution: 0.2,
+              belongsTo: 1 << 1, // The bits of the collision groups to which the shape belongs.
+              collidesWith: 0xffffffff // The bits of the collision groups with which the shape collides.
+            })
+          })
+        })
+      })
+    })
+  }
+
+  renderWithPhysics () {
+    if (!this.rigidBodies) this.setupRigidBodies()
+    this.world.step()
+    let stillMoving = false
+    this.rigidBodies.forEach(rigidBody => {
+      if (rigidBody.body.isStatic) return
+      const newPosition = this.group.worldToLocal(
+        new THREE.Vector3(...Object.values(rigidBody.body.getPosition()))
+      )
+      const newRotation = rigidBody.body.getQuaternion()
+      if (rigidBody.mesh.position.toArray().join('') !== newPosition.toArray().join('')) {
+        stillMoving = true
+      }
+      rigidBody.mesh.position.copy(newPosition)
+      rigidBody.mesh.quaternion.copy(newRotation)
+
+      rigidBody.positionsTracker.push([
+        rigidBody.mesh.position.toArray(),
+        Object.values(newRotation)
+      ])
+    })
+
+    if (!stillMoving) {
+      this.rebuild = true
+    }
+  }
+
+  animateRebuild () {
+    const rigidBodies = this.rigidBodies.filter(rigidBody => {
+      return rigidBody.positionsTracker && rigidBody.positionsTracker.length > 0
+    })
+
+    if (rigidBodies.length === 0) {
+      this.rebuild = false
+      this.rotationsTracker = []
+      this.rigidBodies.forEach(rigidBody => rigidBody.body.dispose())
+      this.rigidBodies = null
+      return
+    }
+
+    rigidBodies.forEach(rigidBody => {
+      const trackedPosition = rigidBody.positionsTracker.pop()
+      rigidBody.mesh.position.set(...trackedPosition[0])
+      rigidBody.mesh.quaternion.set(...trackedPosition[1])
+    })
+  }
+
+  getRenderFunction () {
+    if (this.rotationsTracker.length >= 30) {
+      this.isSolving = true
+      return 'rotateSection'
+    }
+    if (this.rebuild) {
+      this.usePhysics = false
+      return 'animateRebuild'
+    }
+    if (this.usePhysics) {
+      this.isSolving = false
+      this.usePhysics = true
+      return 'renderWithPhysics'
+    }
+
+    return 'rotateSection'
   }
 
   animate = () => {
@@ -272,8 +391,8 @@ export default class RubixCube extends Component {
       requestAnimationFrame(this.animate)
     }, timeout)
     // Animations
-    this.rotateCube()
-    this.rotateSection()
+    this[this.getRenderFunction()]()
+
     this.composer.render(this.clock.getDelta())
     this.deltaTime = now - this.frameRenderTime
     this.frameRenderTime = now
@@ -321,12 +440,12 @@ export default class RubixCube extends Component {
   }
 
   createFloor () {
-    const geometry = new THREE.PlaneGeometry(50, 50)
+    const geometry = new THREE.BoxGeometry(50, 50, 1)
     const material = new THREE.MeshPhongMaterial({color: 0xffffff, side: THREE.DoubleSide})
     this.floor = new THREE.Mesh(geometry, material)
     this.floor.receiveShadow = true
     this.scene.add(this.floor)
-    this.floor.translateY(-4)
+    this.floor.translateY(-6)
     this.floor.rotateX(THREE.Math.degToRad(90))
   }
 
@@ -361,13 +480,28 @@ export default class RubixCube extends Component {
     await this.setupSMAAPass()
   }
 
-  async setup () {
+  setupState () {
     this.cycle = 0
     this.frame = 0
     this.rotations = 0
     this.clock = new THREE.Clock()
+    this.rotationIncrement = 3
+  }
 
+  setupPhysics () {
+    this.world = new OIMO.World({
+      timestep: 1 / frameRate,
+      iterations: 8,
+      broadphase: 2,
+      worldscale: 1, // scale full world
+      random: true, // randomize sample
+      gravity: [ 0, -9.8, 0 ]
+    })
+  }
+
+  async setupRenderer () {
     this.rotationsTracker = []
+    this.physicsTracker = []
 
     this.scene = new THREE.Scene()
     this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -377,6 +511,14 @@ export default class RubixCube extends Component {
     this.renderer.setSize(window.innerWidth, window.innerHeight)
     this.renderer.shadowMap.enabled = true
 
+    this.camera.position.set(-15, 12, 15)
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0))
+
+    this.composer = new EffectComposer(this.renderer)
+    await this.setupPostProcessing()
+  }
+
+  createObjects () {
     this.group = new THREE.Group()
     this.group.scale.set(1, 1, 1)
 
@@ -386,12 +528,19 @@ export default class RubixCube extends Component {
 
     this.group.position.set(0, 0, 0)
     this.scene.add(this.group)
+  }
 
-    this.camera.position.set(-15, 12, 15)
-    this.camera.lookAt(new THREE.Vector3(0, 0, 0))
-
-    this.composer = new EffectComposer(this.renderer)
-    await this.setupPostProcessing()
+  async setup () {
+    this.setupState()
+    this.setupPhysics()
+    await this.setupRenderer()
+    this.createObjects()
+    // Randomize at start
+    let i = 0
+    while (i < 500) {
+      this.rotateSection()
+      i++
+    }
 
     this.animate()
     console.log(this)
@@ -399,7 +548,9 @@ export default class RubixCube extends Component {
 
   render () {
     return (
-      <canvas ref={el => (this.ref = el)} />
+      <div>
+        <canvas ref={el => (this.ref = el)} />
+      </div>
     )
   }
 }

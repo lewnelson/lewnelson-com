@@ -83,6 +83,7 @@
     "express": "^4.16.3",
     "history": "^4.7.2",
     "lodash": "^4.17.10",
+    "oimo": "^1.0.9",
     "postprocessing": "^4.6.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.1",
