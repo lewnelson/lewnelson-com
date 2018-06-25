@@ -1,0 +1,15 @@
+.nav.nav {
+  display: block;
+
+  .item {
+    color: red;
+
+    &.active {
+      color: blue;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  
+}

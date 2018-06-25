@@ -319,6 +319,16 @@ export default class RubixCube extends Component {
     })
   }
 
+  getPositionDifference (p1, p2, accuracy = 2) {
+    const position1 = p1.toArray()
+    const position2 = p2.toArray()
+    const m = parseInt(`1${new Array(accuracy).fill(0).join('')}`)
+    return position1.map((val, axis) => {
+      let diff = position2[axis] - val
+      return Math.round(diff * m) / m
+    })
+  }
+
   renderWithPhysics () {
     if (!this.rigidBodies) this.setupRigidBodies()
     this.world.step()
@@ -329,9 +339,11 @@ export default class RubixCube extends Component {
         new THREE.Vector3(...Object.values(rigidBody.body.getPosition()))
       )
       const newRotation = rigidBody.body.getQuaternion()
-      if (rigidBody.mesh.position.toArray().join('') !== newPosition.toArray().join('')) {
+      const positionDifference = this.getPositionDifference(rigidBody.mesh.position, newPosition)
+      if (positionDifference.map(v => Math.abs(v)).join('') !== '000') {
         stillMoving = true
       }
+
       rigidBody.mesh.position.copy(newPosition)
       rigidBody.mesh.quaternion.copy(newRotation)
 
@@ -485,7 +497,7 @@ export default class RubixCube extends Component {
     this.frame = 0
     this.rotations = 0
     this.clock = new THREE.Clock()
-    this.rotationIncrement = 3
+    this.rotationIncrement = 12
   }
 
   setupPhysics () {
@@ -495,7 +507,7 @@ export default class RubixCube extends Component {
       broadphase: 2,
       worldscale: 1, // scale full world
       random: true, // randomize sample
-      gravity: [ 0, -9.8, 0 ]
+      gravity: [ 0, -25, 0 ]
     })
   }
 

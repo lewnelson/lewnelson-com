@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import RubixCube from '../components/rubixCube'
+import Navigation from '../containers/Navigation'
 
 export default class Home extends Component {
   static routerProps () {
@@ -12,7 +12,7 @@ export default class Home extends Component {
   render () {
     return (
       <div>
-        <RubixCube />
+        <Navigation />
       </div>
     )
   }

@@ -58,3 +58,5 @@ typings/
 .next
 
 build/
+
+.DS_STORE

@@ -1,1 +1,5 @@
-export const TEST = 'TEST'
+export const UPDATE_DEVICE_TYPE = 'UPDATE_DEVICE_TYPE'
+export const CLOSE_NAVIGATION = 'CLOSE_NAVIGATION'
+export const OPEN_NAVIGATION = 'OPEN_NAVIGATION'
+
+export const ADD_FEATURE = 'ADD_FEATURE'

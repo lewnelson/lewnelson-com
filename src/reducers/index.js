@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import test from './test'
+import device from './device'
 
 export default combineReducers({
-  test
+  device
 })

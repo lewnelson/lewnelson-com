@@ -5,13 +5,16 @@ import { store, history } from './store'
 import { Route, Switch } from 'react-router'
 import * as Pages from './pages'
 import NotFound from './pages/NotFound'
+import Listeners from './containers/Listeners'
+import FeatureDetection from './containers/FeatureDetection'
 
 export default class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <div>
+        <div>
+          <FeatureDetection />
+          <ConnectedRouter history={history}>
             <Switch>
               {
                 Object.keys(Pages).map(page => {
@@ -27,8 +30,9 @@ export default class App extends Component {
               }
               <Route component={NotFound} />
             </Switch>
-          </div>
-        </ConnectedRouter>
+          </ConnectedRouter>
+          <Listeners />
+        </div>
       </Provider>
     )
   }

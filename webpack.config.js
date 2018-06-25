@@ -14,6 +14,14 @@ module.exports = env => {
     module: {
       rules: [
         {
+          test: /\.modernizrrc$/,
+          use: [
+            {
+              loader: 'modernizr-loader'
+            }
+          ]
+        },
+        {
           test: /\.js$/,
           exclude,
           use: {
@@ -21,7 +29,7 @@ module.exports = env => {
           }
         },
         {
-          test: /\.css$/,
+          test: /\.s?css$/,
           exclude: /node_modules/,
           use: [
             {
@@ -32,6 +40,18 @@ module.exports = env => {
             },
             {
               loader: 'sass-loader'
+            }
+          ]
+        },
+        {
+          test: /\.(jpe?g|png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+          use: [
+            {
+              loader: 'base64-inline-loader',
+              options: {
+                limit: '1000',
+                name: '[name].[ext]'
+              }
             }
           ]
         }
