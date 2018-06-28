@@ -1,0 +1,27 @@
+#about-page {
+  img {
+    max-width: 250px;
+    padding: 0 20px 20px 0;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 449px) {
+  #about-page {
+    img {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      float: none;
+    }
+  }
+}
+
+.small-device,
+.extra-small-device {
+  #about-page {
+    img {
+      max-width: 200px;
+    }
+  }
+}

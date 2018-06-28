@@ -86,7 +86,7 @@ export class Navigation extends Component {
             <div className='navigation-bar'>
               <div className='elements-container'>
                 <div className='title'>
-                  {'</> Lewis Nelson'}
+                  Lewis Nelson
                 </div>
               </div>
               {isSmall &&

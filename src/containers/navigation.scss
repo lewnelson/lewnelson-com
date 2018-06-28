@@ -18,17 +18,19 @@
         width: 100%;
         padding: 15px;
         box-sizing: border-box;
-        background-color: transparent;
-        transition-property: background-color;
+        background-color: $color-white;
+        border-bottom: 1px solid $color-grey-light-3;
+        transition-property: background-color, color;
         transition-duration: 400ms;
         transition-timing-function: ease-in-out;
-        color: $font-color-light;
+        color: $font-color-dark;
         display: flex;
 
         a.toggle-drawer {
           flex: 1;
           font-size: 32px;
           text-align: right;
+          color: $color-white;
 
           ion-icon {
             background-color: $primary-color-light-1;
@@ -41,7 +43,6 @@
           flex: 4;
 
           .title {
-            display: none;
             font-family: $mono-font-family;
             font-size: 24px;
             position: absolute;
@@ -95,6 +96,7 @@
       .fixed-navigation-container {
         .navigation-bar {
           background-color: $primary-color;
+          color: $font-color-light;
         }
       }
     }

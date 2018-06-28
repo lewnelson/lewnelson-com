@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TypeWriter } from '../components'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { incrementLinesIndex, incrementSocialLinksIndex } from '../actions/home'
+import { incrementLinesIndex } from '../actions/home'
 import './home.scss'
 
 export class Home extends Component {
@@ -15,9 +15,7 @@ export class Home extends Component {
 
   static propTypes = {
     linesIndex: PropTypes.number.isRequired,
-    socialLinksIndex: PropTypes.number.isRequired,
-    incrementLinesIndex: PropTypes.func.isRequired,
-    incrementSocialLinksIndex: PropTypes.func.isRequired
+    incrementLinesIndex: PropTypes.func.isRequired
   }
 
   lines = [
@@ -65,23 +63,11 @@ export class Home extends Component {
     }
   ]
 
-  revealSocialIcons () {
-    const { socialLinksIndex } = this.props
-    if (socialLinksIndex === this.socialLinks.length - 1) return
-    setTimeout(() => {
-      this.revealSocialIcons()
-    }, 600)
-    this.props.incrementSocialLinksIndex()
-  }
-
   finishedLine = () => {
-    const { linesIndex } = this.props
     this.props.incrementLinesIndex()
-    if (linesIndex === this.lines.length - 1) this.revealSocialIcons()
   }
 
   renderSocialLinks () {
-    const { socialLinksIndex } = this.props
     return (
       <div className='social-links'>
         {
@@ -91,7 +77,6 @@ export class Home extends Component {
               href={link.href}
               title={link.title}
               target='_blank'
-              className={socialLinksIndex < index ? 'hidden' : ''}
             >
               <img
                 src={link.image}
@@ -108,20 +93,22 @@ export class Home extends Component {
     const { linesIndex } = this.props
     const lines = this.lines.slice(0, linesIndex + 1)
     return (
-      <div id='home-page' className='page-container'>
-        {
-          lines.map((line, index) => (
-            <TypeWriter
-              text={line.text}
-              key={line.text}
-              el={line.el}
-              onComplete={this.finishedLine}
-              completionDelay={line.completionDelay}
-              keepCursor={line.keepCursor}
-              complete={index < linesIndex}
-            />
-          ))
-        }
+      <div id='home-page'>
+        <div className='page-container'>
+          {
+            lines.map((line, index) => (
+              <TypeWriter
+                text={line.text}
+                key={line.text}
+                el={line.el}
+                onComplete={this.finishedLine}
+                completionDelay={line.completionDelay}
+                keepCursor={line.keepCursor}
+                complete={index < linesIndex}
+              />
+            ))
+          }
+        </div>
         {this.renderSocialLinks()}
       </div>
     )
@@ -129,13 +116,11 @@ export class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  linesIndex: state.home.linesIndex,
-  socialLinksIndex: state.home.socialLinksIndex
+  linesIndex: state.home.linesIndex
 })
 
 const mapDispatchToProps = dispatch => ({
-  incrementLinesIndex: () => dispatch(incrementLinesIndex()),
-  incrementSocialLinksIndex: () => dispatch(incrementSocialLinksIndex())
+  incrementLinesIndex: () => dispatch(incrementLinesIndex())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

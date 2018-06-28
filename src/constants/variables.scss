@@ -37,6 +37,8 @@ $color-grey-dark-4: darken($color-grey, 40);
 
 $font-color-light: $color-white;
 $font-color-dark: $color-grey-dark-3;
+$link-color: #0000EE;
+$link-color-lighten: lighten($link-color, 30);
 
 // Fixed dimensions
 $navigation-bar-height: 65px;

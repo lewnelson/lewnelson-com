@@ -7,6 +7,31 @@
 }
 
 .page-container {
-  padding: 0 15px;
+  padding: 0 30px;
   margin-top: 50px;
+}
+
+// Fonts
+p,
+a {
+  font-size: 18px;
+}
+
+a,
+a:visited {
+  color: $link-color;
+}
+
+.extra-small-device,
+.small-device {
+  .page-container {
+    padding: 0 15px;
+    margin-top: 20px;
+  }
+}
+
+.no-touchevents {
+  a:hover {
+    color: $link-color-lighten;
+  }
 }
