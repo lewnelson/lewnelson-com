@@ -1,0 +1,12 @@
+@import 'normalize-scss';
+@import './constants/variables';
+@include normalize();
+
+* {
+  font-family: $main-font-family;
+}
+
+.page-container {
+  padding: 0 15px;
+  margin-top: 50px;
+}

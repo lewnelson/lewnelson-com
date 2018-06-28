@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './navigation.scss'
 import { Link } from 'react-router-dom'
-import { Home, About } from '../pages'
+import { Home, About, Contact, Projects } from '../pages'
 import { getPath } from '../helpers'
 import { isSmall } from '../selectors/device'
-import { openNavigation, closeNavigation } from '../actions/device'
+import { openNavigation, closeNavigation } from '../actions/navigation'
 
 export class Navigation extends Component {
   static propTypes = {
@@ -17,17 +17,27 @@ export class Navigation extends Component {
     openNavigation: PropTypes.func.isRequired
   }
 
-  getClassNames (linkPath) {
-    const { path } = this.props
-    let classNames = [ 'item' ]
-    if (path.substr(0, linkPath.length) === linkPath) classNames.push('active')
-    return classNames.join(' ')
+  getPathSegments (url) {
+    return url.replace(/^\//, '').split('/')
   }
 
-  getContainerClassNames () {
-    const { isSmall } = this.props
-    let classNames = [ 'nav' ]
-    if (isSmall) classNames.push('small')
+  getClassNames (linkPath) {
+    let classNames = [ 'item' ]
+    const linkPathSegments = this.getPathSegments(linkPath)
+    const currentPathSegments = this.getPathSegments(this.props.path)
+    let match = true
+    while ((linkPathSegments.length > 0 || currentPathSegments.length > 0) && match) {
+      let nextLinkPathSegment = linkPathSegments.shift()
+      let nextCurrentPathSegment = currentPathSegments.shift()
+      if (
+        (nextLinkPathSegment !== undefined && nextCurrentPathSegment === undefined) ||
+        nextLinkPathSegment !== nextCurrentPathSegment
+      ) {
+        match = false
+      }
+    }
+
+    if (match) classNames.push('active')
     return classNames.join(' ')
   }
 
@@ -35,9 +45,8 @@ export class Navigation extends Component {
     if (!this.props.isSmall && prevProps.isSmall && this.props.navigationOpen) this.props.closeNavigation()
   }
 
-  render () {
-    const { navigationOpen, closeNavigation, openNavigation, isSmall } = this.props
-    const links = [
+  getLinks () {
+    return [
       {
         path: getPath(Home),
         title: 'Home'
@@ -45,27 +54,61 @@ export class Navigation extends Component {
       {
         path: getPath(About),
         title: 'About'
+      },
+      {
+        path: getPath(Projects),
+        title: 'Projects'
+      },
+      {
+        path: getPath(Contact),
+        title: 'Contact'
       }
     ]
+  }
 
+  render () {
+    const { navigationOpen, closeNavigation, openNavigation, isSmall } = this.props
+    const drawerClasses = [ 'drawer-navigation' ]
+    if (navigationOpen) drawerClasses.push('open')
+    if (!isSmall) drawerClasses.push('expanded')
     return (
-      <nav className={this.getContainerClassNames()}>
-        {
-          isSmall &&
-          (
-            <button
-              onClick={() => navigationOpen ? closeNavigation() : openNavigation()}
-            >
-              {navigationOpen ? 'Close' : 'Open'}
-            </button>
-          )
-        }
-        {
-          links.map(link => (
-            <Link key={link.path} to={link.path} className={this.getClassNames(link.path)}>{link.title}</Link>
-          ))
-        }
-      </nav>
+      <div className={drawerClasses.join(' ')}>
+        <div className='fixed-navigation-wrapper'>
+          <div className='fixed-navigation-container'>
+            <div className='navigation-bar'>
+              <div className='elements-container'>
+                <div className='title'>
+                  {'</> Lewis Nelson'}
+                </div>
+              </div>
+              {isSmall &&
+                <a
+                  className='toggle-drawer'
+                  onClick={() => navigationOpen ? closeNavigation() : openNavigation()}
+                >
+                  {
+                    navigationOpen
+                      ? (<ion-icon name='md-close' />)
+                      : (<ion-icon name='md-menu' />)
+                  }
+                </a>
+              }
+              {!isSmall &&
+                this.getLinks().map(link => (
+                  <Link key={link.path} to={link.path} className={this.getClassNames(link.path)}>{link.title}</Link>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+        <nav>
+          {
+            this.getLinks().map(link => (
+              <Link key={link.path} to={link.path} className={this.getClassNames(link.path)}>{link.title}</Link>
+            ))
+          }
+        </nav>
+      </div>
     )
   }
 }
@@ -73,7 +116,7 @@ export class Navigation extends Component {
 export const mapStateToProps = state => ({
   path: state.router.location.pathname,
   isSmall: isSmall(state),
-  navigationOpen: state.device.open
+  navigationOpen: state.navigation.open
 })
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -5,6 +5,13 @@ export const TYPES = {
   LARGE: 3
 }
 
+export const CLASSES = [
+  'extra-small-device',
+  'small-device',
+  'medium-device',
+  'large-device'
+]
+
 export const WIDTHS_TYPES = {
   360: TYPES.EXTRA_SMALL,
   900: TYPES.SMALL,

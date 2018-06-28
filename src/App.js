@@ -7,6 +7,8 @@ import * as Pages from './pages'
 import NotFound from './pages/NotFound'
 import Listeners from './containers/Listeners'
 import FeatureDetection from './containers/FeatureDetection'
+import Navigation from './containers/Navigation'
+import './app.scss'
 
 export default class App extends Component {
   render () {
@@ -15,21 +17,24 @@ export default class App extends Component {
         <div>
           <FeatureDetection />
           <ConnectedRouter history={history}>
-            <Switch>
-              {
-                Object.keys(Pages).map(page => {
-                  const Page = Pages[page]
-                  return (
-                    <Route
-                      key={page}
-                      {...Page.routerProps()}
-                      component={Page}
-                    />
-                  )
-                })
-              }
-              <Route component={NotFound} />
-            </Switch>
+            <div>
+              <Navigation />
+              <Switch>
+                {
+                  Object.keys(Pages).map(page => {
+                    const Page = Pages[page]
+                    return (
+                      <Route
+                        key={page}
+                        {...Page.routerProps()}
+                        component={Page}
+                      />
+                    )
+                  })
+                }
+                <Route component={NotFound} />
+              </Switch>
+            </div>
           </ConnectedRouter>
           <Listeners />
         </div>

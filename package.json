@@ -88,6 +88,7 @@
     "history": "^4.7.2",
     "lodash": "^4.17.10",
     "matter-js": "^0.14.2",
+    "normalize-scss": "^7.0.1",
     "oimo": "^1.0.9",
     "postprocessing": "^4.6.0",
     "prop-types": "^15.6.1",

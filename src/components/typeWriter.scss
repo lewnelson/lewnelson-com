@@ -1,0 +1,17 @@
+@keyframes blinkingCursor {
+  from { opacity: 0; }
+  50% { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.type-writer {
+  .blinking-cursor {
+    border-right: 2px solid #000;
+    height: 100%;
+    padding-left: 4px;
+    opacity: 0;
+    animation-name: blinkingCursor;
+    animation-duration: 700ms;
+    animation-iteration-count: infinite;
+  }
+}

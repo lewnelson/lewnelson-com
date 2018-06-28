@@ -1,0 +1,46 @@
+// Colors
+$primary-color: #8321B9;
+$primary-color-light-1: lighten($primary-color, 10);
+$primary-color-light-2: lighten($primary-color, 20);
+$primary-color-light-3: lighten($primary-color, 30);
+$primary-color-light-4: lighten($primary-color, 40);
+$primary-color-light-5: lighten($primary-color, 50);
+$primary-color-dark-1: darken($primary-color, 10);
+$primary-color-dark-2: darken($primary-color, 20);
+$primary-color-dark-3: darken($primary-color, 30);
+$primary-color-dark-4: darken($primary-color, 40);
+$primary-color-dark-5: darken($primary-color, 50);
+
+$secondary-color: #1A97AE;
+$secondary-color-light-1: lighten($secondary-color, 10);
+$secondary-color-light-2: lighten($secondary-color, 20);
+$secondary-color-light-3: lighten($secondary-color, 30);
+$secondary-color-light-4: lighten($secondary-color, 40);
+$secondary-color-light-5: lighten($secondary-color, 50);
+$secondary-color-dark-1: darken($secondary-color, 10);
+$secondary-color-dark-2: darken($secondary-color, 20);
+$secondary-color-dark-3: darken($secondary-color, 30);
+$secondary-color-dark-4: darken($secondary-color, 40);
+$secondary-color-dark-5: darken($secondary-color, 50);
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-grey: #7f7f7f;
+$color-grey-light-1: lighten($color-grey, 10);
+$color-grey-light-2: lighten($color-grey, 20);
+$color-grey-light-3: lighten($color-grey, 30);
+$color-grey-light-4: lighten($color-grey, 40);
+$color-grey-dark-1: darken($color-grey, 10);
+$color-grey-dark-2: darken($color-grey, 20);
+$color-grey-dark-3: darken($color-grey, 30);
+$color-grey-dark-4: darken($color-grey, 40);
+
+$font-color-light: $color-white;
+$font-color-dark: $color-grey-dark-3;
+
+// Fixed dimensions
+$navigation-bar-height: 65px;
+
+// Fonts
+$main-font-family: 'Roboto', 'Helvetica', sans-serif;
+$mono-font-family: 'Roboto Mono', 'Courier', monospace;

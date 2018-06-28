@@ -1,9 +1,8 @@
 import { getDeviceType } from '../helpers/device'
-import { UPDATE_DEVICE_TYPE, OPEN_NAVIGATION, CLOSE_NAVIGATION } from '../constants/actions'
+import { UPDATE_DEVICE_TYPE } from '../constants/actions'
 
 const initialState = {
-  type: getDeviceType(window.innerWidth),
-  open: false
+  type: getDeviceType(window.innerWidth)
 }
 
 export default (currentState = initialState, action) => {
@@ -12,16 +11,6 @@ export default (currentState = initialState, action) => {
       return {
         ...currentState,
         type: action.payload
-      }
-    case OPEN_NAVIGATION:
-      return {
-        ...currentState,
-        open: true
-      }
-    case CLOSE_NAVIGATION:
-      return {
-        ...currentState,
-        open: false
       }
     default:
       return currentState

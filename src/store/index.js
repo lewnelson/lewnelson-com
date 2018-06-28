@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
-import { thunk } from '../middleware'
+import { thunk, navigation } from '../middleware'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { isDev } from '../helpers'
 import reducers from '../reducers'
@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 
 export const history = createBrowserHistory()
-const middleware = [ thunk ]
+const middleware = [ thunk, navigation ]
 let appliedMiddleware = applyMiddleware(routerMiddleware(history), ...middleware)
 if (isDev()) appliedMiddleware = composeWithDevTools(appliedMiddleware)
 

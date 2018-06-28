@@ -29,7 +29,7 @@ function handleReload ({ eventType, filename }) {
 
 function connect () {
   try {
-    const uri = 'ws://localhost:8080/'
+    const uri = 'ws://localhost:8085/'
     ws = new WebSocket(uri)
     ws.addEventListener('open', () => {
       resetPollConnect()

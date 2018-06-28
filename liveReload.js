@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const uuidv4 = require('uuid/v4')
 
-const wss = new WebSocket.Server({ port: 8080 })
+const wss = new WebSocket.Server({ port: 8085 })
 const connectedClients = {}
 
 function send (msg, ws) {
