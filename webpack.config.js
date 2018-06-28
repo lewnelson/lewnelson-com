@@ -8,8 +8,9 @@ module.exports = env => {
     entry: path.resolve(__dirname, 'src/index.js'),
     output: {
       path: path.resolve(__dirname, 'public/build/javascripts'),
-      filename: 'app.js',
-      publicPath: '/build/javascripts'
+      filename: 'app.bundle.js',
+      chunkFilename: '[name].bundle.js',
+      publicPath: '/build/javascripts/'
     },
     module: {
       rules: [

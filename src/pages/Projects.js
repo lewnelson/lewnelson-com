@@ -1,4 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { getPath } from '../helpers'
+
+import {
+  RubixCube
+} from '.'
 
 export default class Projects extends Component {
   static routerProps () {
@@ -11,7 +17,7 @@ export default class Projects extends Component {
   render () {
     return (
       <div>
-        <p>Projects</p>
+        <p>Projects <Link to={getPath(RubixCube)}>Rubix Cube</Link></p>
       </div>
     )
   }

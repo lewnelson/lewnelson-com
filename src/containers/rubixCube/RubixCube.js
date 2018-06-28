@@ -90,13 +90,21 @@ const colorsMap = {
 }
 
 export default class RubixCube extends Component {
+  onWindowResize = () => {
+    this.camera.aspect = window.innerWidth / window.innerHeight
+    this.camera.updateProjectionMatrix()
+    this.renderer.setSize(window.innerWidth, window.innerHeight)
+  }
+
   componentDidMount () {
     this._isMounted = true
     this.setup()
+    window.addEventListener('resize', this.onWindowResize)
   }
 
   componentWillUmount () {
     this._isMounted = false
+    window.removeEventListener('resize', this.onWindowResize)
   }
 
   rotateCube () {
