@@ -52,8 +52,7 @@ export class Listeners extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  deviceType: state.device.type,
-  navigationOpen: state.device.open
+  deviceType: state.device.type
 })
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -42,7 +42,15 @@ export class Navigation extends Component {
   }
 
   componentDidUpdate (prevProps) {
-    if (!this.props.isSmall && prevProps.isSmall && this.props.navigationOpen) this.props.closeNavigation()
+    if (
+      this.props.navigationOpen &&
+      (
+        (!this.props.isSmall && prevProps.isSmall) ||
+        (this.props.isSmall && this.props.path !== prevProps.path)
+      )
+    ) {
+      this.props.closeNavigation()
+    }
   }
 
   getLinks () {
