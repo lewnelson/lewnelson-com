@@ -1,0 +1,51 @@
+.website-showcase {
+  .main-image {
+    display: block;
+    margin: 30px auto 10px auto;
+    text-align: center;
+
+    img {
+      width: 610px;
+    }
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .website-showcase {
+    .main-image {
+      img {
+        width: 510px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .website-showcase {
+    .main-image {
+      img {
+        width: 410px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .website-showcase {
+    .main-image {
+      img {
+        width: 300px;
+      }
+    }
+  }
+}
+
+.extra-small-device {
+  .website-showcase {
+    .main-image {
+      img {
+        width: 280px;
+      }
+    }
+  }
+}

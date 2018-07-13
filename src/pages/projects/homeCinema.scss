@@ -1,0 +1,29 @@
+#home-cinema-page {
+  .main-image {
+    margin: 30px 0 10px 0;
+
+    img {
+      max-width: 410px;
+    }
+  }
+}
+
+@media screen and (max-width: 470px) {
+  #home-cinema-page {
+    .main-image {
+      img {
+        width: 300px;
+      }
+    }
+  }
+}
+
+.extra-small-device {
+  #home-cinema-page {
+    .main-image {
+      img {
+        width: 280px;
+      }
+    }
+  }
+}

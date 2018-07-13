@@ -1,18 +1,23 @@
 #about-page {
-  img {
-    max-width: 250px;
+  .profile-image {
     padding: 0 20px 20px 0;
     float: left;
+
+    img {
+      width: 250px;
+    }
   }
 }
 
 @media screen and (max-width: 449px) {
   #about-page {
-    img {
+    .profile-image {
+      display: inline-block;
       position: relative;
       left: 50%;
       transform: translateX(-50%);
       float: none;
+      padding-right: 0;
     }
   }
 }
@@ -20,8 +25,10 @@
 .small-device,
 .extra-small-device {
   #about-page {
-    img {
-      max-width: 200px;
+    .profile-image {
+      img {
+        width: 200px;
+      }
     }
   }
 }

@@ -1,6 +1,19 @@
 #rubix-cube-page {
-  canvas {
-    position: absolute;
-    top: 0;
+  .gl-canvas {
+    width: 100%;
+    margin: 0 auto;
+    height: 400px;
+  }
+
+  .description {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #rubix-cube-page {
+    .gl-canvas {
+      height: 320px;
+    }
   }
 }

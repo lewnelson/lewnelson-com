@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as THREE from 'three'
 import { RenderPass, EffectComposer, SMAAPass } from 'postprocessing'
 import * as OIMO from 'oimo'
+import PropTypes from 'prop-types'
 
 const frameRate = 60
 const timeout = 1000 / frameRate
@@ -90,21 +91,30 @@ const colorsMap = {
 }
 
 export default class RubixCube extends Component {
-  onWindowResize = () => {
-    this.camera.aspect = window.innerWidth / window.innerHeight
-    this.camera.updateProjectionMatrix()
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
+  static propTypes = {
+    canvasWidth: PropTypes.number.isRequired,
+    canvasHeight: PropTypes.number.isRequired
+  }
+
+  componentDidUpdate (prevProps) {
+    const { canvasWidth, canvasHeight } = this.props
+    if (
+      (canvasWidth !== prevProps.canvasWidth || canvasHeight !== prevProps.canvasHeight) &&
+      this.camera && this.renderer
+    ) {
+      this.camera.aspect = canvasWidth / canvasHeight
+      this.camera.updateProjectionMatrix()
+      this.renderer.setSize(canvasWidth, canvasHeight)
+    }
   }
 
   componentDidMount () {
     this._isMounted = true
     this.setup()
-    window.addEventListener('resize', this.onWindowResize)
   }
 
   componentWillUmount () {
     this._isMounted = false
-    window.removeEventListener('resize', this.onWindowResize)
   }
 
   rotateCube () {
@@ -520,15 +530,16 @@ export default class RubixCube extends Component {
   }
 
   async setupRenderer () {
+    const { canvasWidth, canvasHeight } = this.props
     this.rotationsTracker = []
     this.physicsTracker = []
 
     this.scene = new THREE.Scene()
-    this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
+    this.camera = new THREE.PerspectiveCamera(30, canvasWidth / canvasHeight, 0.1, 1000)
 
     this.renderer = new THREE.WebGLRenderer({ canvas: this.ref, antialias: true })
     this.renderer.setClearColor(0xffffff)
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
+    this.renderer.setSize(canvasWidth, canvasHeight)
     this.renderer.shadowMap.enabled = true
 
     this.camera.position.set(-15, 12, 15)

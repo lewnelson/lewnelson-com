@@ -1,0 +1,14 @@
+a.back-to-link {
+  position: relative;
+  margin-left: 1.6em;
+  display: block;
+
+  ion-icon {
+    width: 1.5em;
+    height: 1.5em;
+    position: absolute;
+    left: -1.6em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

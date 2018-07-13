@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router'
 import * as Pages from './pages'
 import NotFound from './pages/NotFound'
 import Listeners from './containers/Listeners'
+import ScrollToTop from './containers/ScrollToTop'
 import FeatureDetection from './containers/FeatureDetection'
 import Navigation from './containers/Navigation'
 import './app.scss'
@@ -17,7 +18,7 @@ export default class App extends Component {
         <div>
           <FeatureDetection />
           <ConnectedRouter history={history}>
-            <div>
+            <ScrollToTop>
               <Navigation />
               <Switch>
                 {
@@ -34,7 +35,7 @@ export default class App extends Component {
                 }
                 <Route component={NotFound} />
               </Switch>
-            </div>
+            </ScrollToTop>
           </ConnectedRouter>
           <Listeners />
         </div>

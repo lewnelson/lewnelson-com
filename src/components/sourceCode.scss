@@ -1,0 +1,13 @@
+a.view-source-code {
+  &:before {
+    content: '';
+    background-image: url('/images/github.svg');
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    padding-right: 8px;
+  }
+}

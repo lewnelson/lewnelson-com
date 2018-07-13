@@ -6,6 +6,13 @@
   font-family: $main-font-family;
 }
 
+.content-container,
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 .page-container {
   padding: 0 30px;
   margin-top: 50px;
@@ -34,4 +41,9 @@ a:visited {
   a:hover {
     color: $link-color-lighten;
   }
+}
+
+.middle {
+  text-align: center;
+  display: block;
 }

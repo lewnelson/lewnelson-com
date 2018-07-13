@@ -1,0 +1,37 @@
+@import '../constants/variables';
+
+.img-container {
+  position: relative;
+  display: inline-block;
+
+  img,
+  div.mask {
+    transition: opacity 400ms ease-in-out;
+  }
+
+  div.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    background-color: $color-white;
+  }
+
+  &.mask {
+    img {
+      opacity: 0;
+    }
+
+    div.mask {
+      opacity: 1;
+    }
+  }
+
+  &.ready {
+    img {
+      opacity: 1;
+    }
+  }
+}

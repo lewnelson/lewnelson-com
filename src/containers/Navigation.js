@@ -26,11 +26,12 @@ export class Navigation extends Component {
     const linkPathSegments = this.getPathSegments(linkPath)
     const currentPathSegments = this.getPathSegments(this.props.path)
     let match = true
-    while ((linkPathSegments.length > 0 || currentPathSegments.length > 0) && match) {
+    while (currentPathSegments.length > 0 && match) {
       let nextLinkPathSegment = linkPathSegments.shift()
       let nextCurrentPathSegment = currentPathSegments.shift()
+      if (nextLinkPathSegment === undefined) continue
       if (
-        (nextLinkPathSegment !== undefined && nextCurrentPathSegment === undefined) ||
+        nextCurrentPathSegment === undefined ||
         nextLinkPathSegment !== nextCurrentPathSegment
       ) {
         match = false

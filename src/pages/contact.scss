@@ -1,0 +1,14 @@
+#contact-page {
+  .social-links-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  .view-source-code-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+}

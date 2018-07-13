@@ -1,6 +1,11 @@
 @import '../constants/variables';
 
 #home-page {
+  .view-source-code-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
   .page-container {
     width: 100%;
     box-sizing: border-box;
@@ -27,21 +32,10 @@
     }
   }
 
-  .social-links {
-    text-align: center;
+  .social-links-container {
     position: fixed;
     bottom: 20px;
     width: 100%;
-
-
-    a {
-      display: inline-block;
-      padding: 10px;
-
-      img {
-        width: 40px;
-      }
-    }
   }
 }
 

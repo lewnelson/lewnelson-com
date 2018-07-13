@@ -1,0 +1,61 @@
+@import '../constants/variables';
+
+#projects-page {
+  .projects {
+    text-align: center;
+
+    .project {
+      text-align: center;
+      display: inline-block;
+      padding: 15px 30px;
+      width: 200px;
+
+      .image-container {
+        width: 200px;
+        height: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 1px solid $color-grey-light-3;
+        box-sizing: border-box;
+        margin: 0 auto;
+      }
+
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &.rubix-cube {
+        .image-container {
+          background-image: url('/images/projects/rubix-cube.png');
+        }
+      }
+
+      &.home-cinema {
+        .image-container {
+          background-image: url('/images/projects/home-cinema.jpg');
+        }
+      }
+
+      &.the-crafters {
+        .image-container {
+          background-image: url('/images/projects/the-crafters.jpg');
+        }
+      }
+
+      &.louise-anne-kennedy-photography {
+        .image-container {
+          background-image: url('/images/projects/louise-anne-kennedy-photography.png');
+        }
+      }
+
+      &.borders-railway-guide {
+        .image-container {
+          background-image: url('/images/projects/borders-railway-guide.jpg');
+        }
+      }
+    }
+  }
+}
