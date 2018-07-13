@@ -98,6 +98,7 @@ export default class RubixCube extends Component {
 
   componentDidUpdate (prevProps) {
     const { canvasWidth, canvasHeight } = this.props
+    if (!this._isMounted) return
     if (
       (canvasWidth !== prevProps.canvasWidth || canvasHeight !== prevProps.canvasHeight) &&
       this.camera && this.renderer
@@ -113,8 +114,37 @@ export default class RubixCube extends Component {
     this.setup()
   }
 
-  componentWillUmount () {
+  componentWillUnmount () {
     this._isMounted = false
+    this.destroy()
+  }
+
+  destroy () {
+    this.camera = null
+    this.blocks = null
+    this.sectionRotation = null
+    this.usePhysics = null
+    this.rigidBodies = null
+    this.rebuild = null
+    this.rotationsTracker = null
+    this.isSolving = null
+    this.deltaTime = null
+    this.frameRenderTime = null
+    this.frame = null
+    this.floor = null
+    this.smaaPass = null
+    this.renderPass = null
+    this.cycle = null
+    this.rotations = null
+    this.clock = null
+    this.rotationIncrement = null
+    this.world = null
+    this.rotationsTracker = null
+    this.physicsTracker = null
+    this.scene = null
+    this.renderer = null
+    this.composer = null
+    this.group = null
   }
 
   rotateCube () {

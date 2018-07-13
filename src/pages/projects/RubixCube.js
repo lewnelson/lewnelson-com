@@ -83,7 +83,10 @@ export default class RubixCube extends Page {
           className='gl-canvas'
           ref={el => (this.glCanvasEl = el)}
         >
-          <RubixCubeContainer canvasWidth={this.getCanvasWidth()} canvasHeight={this.getCanvasHeight()} />
+          <RubixCubeContainer
+            canvasWidth={this.getCanvasWidth()}
+            canvasHeight={this.getCanvasHeight()}
+          />
         </div>
         <div className='description'>
           <p>
