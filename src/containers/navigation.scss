@@ -42,7 +42,9 @@
         .elements-container {
           flex: 4;
 
-          .title {
+          .title a {
+            color: $font-color-dark;
+            text-decoration: none;
             font-family: $mono-font-family;
             font-size: 24px;
             position: absolute;
@@ -97,6 +99,12 @@
         .navigation-bar {
           background-color: $primary-color;
           color: $font-color-light;
+
+          .elements-container {
+            .title a {
+              color: $font-color-light;
+            }
+          }
         }
       }
     }

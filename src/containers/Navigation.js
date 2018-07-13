@@ -87,7 +87,7 @@ export class Navigation extends Component {
             <div className='navigation-bar'>
               <div className='elements-container'>
                 <div className='title'>
-                  Lewis Nelson
+                  <Link to={getPath(Home)} title='Home'>Lewis Nelson</Link>
                 </div>
               </div>
               {isSmall &&
