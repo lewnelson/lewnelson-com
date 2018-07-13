@@ -13,7 +13,6 @@
     "test": "TZ='UTC' jest",
     "lint": "eslint --ext .js src/",
     "coverage": "TZ='UTC' jest --coverage",
-    "coverage:ci": "npm run coverage -- --runInBand --forceExit",
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
