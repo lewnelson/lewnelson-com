@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../containers/Page'
 import { Link } from 'react-router-dom'
 import { getPath } from '../helpers'
 import { Projects } from '../pages'
 import { Img } from '../components'
 import './about.scss'
 
-export default class About extends Component {
+export default class About extends Page {
+  title = 'Lewis Nelson - About Lewis Nelson, Software Engineer'
+
   static routerProps () {
     return {
       exact: true,

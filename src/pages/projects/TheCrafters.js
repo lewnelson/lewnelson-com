@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../../containers/Page'
 import { Projects } from '../'
 import { getPath } from '../../helpers/routing'
 import { BackTo, Img, ExternalLink } from '../../components'
 import './websiteShowcase.scss'
 
-export default class TheCrafters extends Component {
+export default class TheCrafters extends Page {
+  title = 'Lewis Nelson - The Crafters project'
+
   static routerProps () {
     return {
       exact: true,

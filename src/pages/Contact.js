@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../containers/Page'
 import { SocialLinks, SourceCodeLink } from '../components'
 import './contact.scss'
 
-export default class Contact extends Component {
+export default class Contact extends Page {
+  title = 'Lewis Nelson - Get in touch'
+
   static routerProps () {
     return {
       exact: true,

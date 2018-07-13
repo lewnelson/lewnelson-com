@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../containers/Page'
 import { TypeWriter, SocialLinks, SourceCodeLink } from '../components'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { incrementLinesIndex } from '../actions/home'
 import './home.scss'
 
-export class Home extends Component {
+export class Home extends Page {
+  title = 'Lewis Nelson - Software Engineer'
+
   static routerProps () {
     return {
       exact: true,

@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../../containers/Page'
 import PageLoader from '../../components/PageLoader'
 import { Projects } from '../'
 import { getPath } from '../../helpers/routing'
 import { SourceCodeLink, BackTo } from '../../components'
 import './rubixCube.scss'
 
-export default class RubixCube extends Component {
+export default class RubixCube extends Page {
+  title = 'Lewis Nelson - WebGL rubix cube project'
+
   static routerProps () {
     return {
       exact: true,
@@ -33,6 +36,7 @@ export default class RubixCube extends Component {
   }
 
   componentDidMount () {
+    super.componentDidMount()
     this._isMounted = true
     this.loadComponent()
     window.addEventListener('resize', this.onResize)

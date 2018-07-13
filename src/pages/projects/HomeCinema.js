@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../../containers/Page'
 import { Projects } from '../'
 import { getPath } from '../../helpers/routing'
 import { BackTo, Img, ExternalLink } from '../../components'
 import './homeCinema.scss'
 
-export default class HomeCinema extends Component {
+export default class HomeCinema extends Page {
+  title = 'Lewis Nelson - Home cinema project'
+
   static routerProps () {
     return {
       exact: true,

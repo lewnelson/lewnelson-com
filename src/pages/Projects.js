@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../containers/Page'
 import { Link } from 'react-router-dom'
 import { getPath } from '../helpers'
 import './projects.scss'
@@ -11,7 +12,9 @@ import {
   BordersRailwayGuide
 } from '.'
 
-export default class Projects extends Component {
+export default class Projects extends Page {
+  title = 'Lewis Nelson - Projects'
+
   static routerProps () {
     return {
       exact: true,
