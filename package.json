@@ -28,6 +28,9 @@
   "homepage": "https://github.com/lewnelson/lewnelson-com#readme",
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/jestSetup.js",
+    "moduleNameMapper": {
+      "^.*?\\.(scss)$": "<rootDir>/src/__mocks__/scssMock.js"
+    },
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
