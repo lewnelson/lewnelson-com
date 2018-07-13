@@ -537,8 +537,8 @@ export default class RubixCube extends Component {
     this.scene = new THREE.Scene()
     this.camera = new THREE.PerspectiveCamera(30, canvasWidth / canvasHeight, 0.1, 1000)
 
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.ref, antialias: true })
-    this.renderer.setClearColor(0xffffff)
+    this.renderer = new THREE.WebGLRenderer({ canvas: this.ref, antialias: true, alpha: true })
+    this.renderer.setClearColor(0xffffff, 1)
     this.renderer.setSize(canvasWidth, canvasHeight)
     this.renderer.shadowMap.enabled = true
 
