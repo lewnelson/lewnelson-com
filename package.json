@@ -7,7 +7,7 @@
     "postinstall": "./scripts/post-install.sh",
     "start": "nodemon --ignore './src' ./server.js",
     "dev": "npm-run-all --parallel livereload start build:dev",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --env.NODE_ENV=production",
     "build:dev": "webpack --mode none --watch --env.NODE_ENV=development",
     "livereload": "node ./liveReload.js",
     "test": "TZ='UTC' jest",

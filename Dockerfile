@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install system dependencies
-RUN apt-get update && apt-get -y install ruby
+RUN apt-get update && apt-get -y install ruby ruby-dev
 RUN echo "y" | gem install sass
 
 # Install app dependencies
@@ -16,10 +16,10 @@ RUN npm install
 COPY . /usr/src/app
 
 # Build app for production environment
-RUN npm build
-RUN npm run start
+RUN npm run build
+RUN nohup npm run start &>/dev/null &
 
-EXPOSE 3000
+EXPOSE 4000
 
-# Run app binding to port 3000
+# Run app binding to port 4000
 CMD ["node", "index.js"]
