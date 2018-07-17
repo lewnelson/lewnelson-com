@@ -1,0 +1,207 @@
+#not-found-page {
+  .not-found-graphic {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-image: url('/images/desert-road.jpg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    max-width: 800px;
+
+    .tumbleweed-container {
+      position: absolute;
+      width: 100%;
+      bottom: 90px;
+    }
+
+    .img-container {
+      position: absolute;
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    .background-tumbleweed-1 {
+      position: absolute;
+      bottom: 100px;
+
+      .img-container {
+        animation: tumbleweed-background 7s infinite linear;
+        animation-delay: 2s;
+
+        img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+
+    .background-tumbleweed-2 {
+      position: absolute;
+      bottom: 70px;
+
+      .img-container {
+        animation: tumbleweed-background 6s infinite linear;
+        animation-delay: 1s;
+
+        img {
+          width: 140px;
+          height: 140px;
+        }
+      }
+    }
+
+    .background-tumbleweed-1,
+    .background-tumbleweed-2 {
+      width: 100%;
+    }
+
+    .foreground-tumbleweed {
+      .img-container {
+        bottom: 0;
+        animation: tumbleweed-foreground 5s infinite linear;
+
+        img {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes tumbleweed-foreground {
+  0%   { left: 0; transform: translateX(-100%) rotate(0deg); }
+  5%  { bottom: 20px; }
+  10%  { bottom: 20px; }
+  15%  { bottom: 0px; }
+  20%  { bottom: 18px; }
+  25%  { bottom: 0px; }
+  30%  { bottom: 25px; }
+  35%  { bottom: 14px; }
+  40%  { bottom: 0px; }
+  45%  { bottom: 12px; }
+  50%  { bottom: 13px; }
+  55%  { bottom: 16px; }
+  60%  { bottom: 0px; }
+  65%  { bottom: 14px; }
+  70%  { bottom: 4px; }
+  75%  { bottom: 7px; }
+  80%  { bottom: 20px; }
+  85%  { bottom: 10px; }
+  90%  { bottom: 13px; }
+  95%  { bottom: 7px; }
+  100% { left: 100%; transform: translateX(0%) rotate(500deg); }
+}
+
+@keyframes tumbleweed-background {
+  0%   { left: 0; transform: translateX(-100%) rotate(0deg); }
+  5%  { bottom: 15px; }
+  10%  { bottom: 13px; }
+  15%  { bottom: 3px; }
+  20%  { bottom: 0px; }
+  25%  { bottom: 8px; }
+  30%  { bottom: 22px; }
+  35%  { bottom: 16px; }
+  40%  { bottom: 7px; }
+  45%  { bottom: 0px; }
+  50%  { bottom: 13px; }
+  55%  { bottom: 16px; }
+  60%  { bottom: 0px; }
+  65%  { bottom: 20px; }
+  70%  { bottom: 5px; }
+  75%  { bottom: 0px; }
+  80%  { bottom: 19px; }
+  85%  { bottom: 14px; }
+  90%  { bottom: 13px; }
+  95%  { bottom: 4px; }
+  100% { left: 100%; transform: translateX(0%) rotate(500deg); }
+}
+
+@media screen and (max-height: 700px) {
+  #not-found-page {
+    .not-found-graphic {
+      height: 300px;
+
+      .tumbleweed-container {
+        bottom: 20px;
+      }
+
+      .background-tumbleweed-1 {
+        bottom: 60px;
+      }
+
+      .background-tumbleweed-2 {
+        bottom: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #not-found-page {
+    .not-found-graphic {
+      .background-tumbleweed-1 {
+        .img-container {
+          img {
+            width: 55px;
+            height: 55px;
+          }
+        }
+      }
+
+      .background-tumbleweed-2 {
+        .img-container {
+          img {
+            width: 70px;
+            height: 70px;
+          }
+        }
+      }
+
+      .foreground-tumbleweed {
+        .img-container {
+          img {
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #not-found-page {
+    .not-found-graphic {
+      .background-tumbleweed-1 {
+        .img-container {
+          img {
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+
+      .background-tumbleweed-2 {
+        .img-container {
+          img {
+            width: 120px;
+            height: 120px;
+          }
+        }
+      }
+
+      .foreground-tumbleweed {
+        .img-container {
+          img {
+            width: 150px;
+            height: 150px;
+          }
+        }
+      }
+    }
+  }
+}
