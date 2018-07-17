@@ -1,5 +1,22 @@
 @import '../constants/variables';
 
+.medium-device,
+.large-device {
+  .drawer-navigation {
+    .fixed-navigation-wrapper {
+      .fixed-navigation-container {
+        .navigation-bar {
+          .elements-container {
+            .title a {
+              color: $font-color-light;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .drawer-navigation {
   height: 70px;
   position: relative;
