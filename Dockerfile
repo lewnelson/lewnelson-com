@@ -17,9 +17,8 @@ COPY . /usr/src/app
 
 # Build app for production environment
 RUN npm run build
-RUN nohup npm run start &>/dev/null &
 
 EXPOSE 4000
 
 # Run app binding to port 4000
-CMD ["node", "index.js"]
+CMD ["npm", "run", "start"]
