@@ -44,6 +44,7 @@ export class Projects extends Page {
               <li onClick={() => this.props.toggleAllFilters()}>
                 <input
                   type='checkbox'
+                  readOnly
                   checked={this.props.allFiltersChecked}
                 />
                 <label>All</label>
@@ -51,6 +52,7 @@ export class Projects extends Page {
               <li onClick={() => this.props.toggleFilter('professional')}>
                 <input
                   type='checkbox'
+                  readOnly
                   checked={filters.professional}
                 />
                 <label>Professional</label>
@@ -58,6 +60,7 @@ export class Projects extends Page {
               <li onClick={() => this.props.toggleFilter('tinkering')}>
                 <input
                   type='checkbox'
+                  readOnly
                   checked={filters.tinkering}
                 />
                 <label>Tinkering</label>
@@ -65,6 +68,7 @@ export class Projects extends Page {
               <li onClick={() => this.props.toggleFilter('non-software-related')}>
                 <input
                   type='checkbox'
+                  readOnly
                   checked={filters['non-software-related']}
                 />
                 <label>Non-software related</label>
