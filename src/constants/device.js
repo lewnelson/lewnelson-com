@@ -13,7 +13,7 @@ export const CLASSES = [
 ]
 
 export const WIDTHS_TYPES = {
-  360: TYPES.EXTRA_SMALL,
+  400: TYPES.EXTRA_SMALL,
   900: TYPES.SMALL,
   1400: TYPES.MEDIUM,
   [-1]: TYPES.LARGE

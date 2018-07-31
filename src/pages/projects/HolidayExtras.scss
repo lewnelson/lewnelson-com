@@ -1,0 +1,46 @@
+#holiday-extras-page {
+  .main-image {
+    margin: 30px auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    max-width: 400px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  ul.screenshots {
+    padding: 0;
+    max-width: 800px;
+    margin: 30px auto;
+
+    li {
+      list-style: none;
+      display: inline-block;
+      width: 50%;
+      box-sizing: border-box;
+      padding: 10px;
+      transition: width 0.2s ease-in-out;
+
+      &.selected {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #holiday-extras-page {
+    ul.screenshots {
+      li {
+        width: 25%;
+      }
+    }
+  }
+}

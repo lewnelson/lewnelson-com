@@ -45,6 +45,13 @@
         text-overflow: ellipsis;
       }
 
+      &.holiday-extras {
+        .image-container {
+          background-image: url('/images/projects/holiday-extras.png');
+          background-size: contain;
+        }
+      }
+
       &.rubix-cube {
         .image-container {
           background-image: url('/images/projects/rubix-cube.png');

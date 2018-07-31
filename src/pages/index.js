@@ -8,6 +8,7 @@ import TheCrafters from './projects/TheCrafters'
 import LouiseAnneKennedyPhotography from './projects/LouiseAnneKennedyPhotography'
 import HomeCinema from './projects/HomeCinema'
 import BordersRailwayGuide from './projects/BordersRailwayGuide'
+import HolidayExtras from './projects/HolidayExtras'
 
 export {
   About,
@@ -18,5 +19,6 @@ export {
   TheCrafters,
   LouiseAnneKennedyPhotography,
   HomeCinema,
-  BordersRailwayGuide
+  BordersRailwayGuide,
+  HolidayExtras
 }

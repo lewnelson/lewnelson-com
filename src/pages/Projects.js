@@ -13,7 +13,8 @@ import {
   TheCrafters,
   LouiseAnneKennedyPhotography,
   HomeCinema,
-  BordersRailwayGuide
+  BordersRailwayGuide,
+  HolidayExtras
 } from '.'
 
 export class Projects extends Page {
@@ -76,6 +77,14 @@ export class Projects extends Page {
             </ul>
           </div>
           <div className='projects'>
+            { filters.professional &&
+              <Link to={getPath(HolidayExtras)}>
+                <div className='holiday-extras project'>
+                  <div className='image-container' />
+                  <p>Holiday Extras</p>
+                </div>
+              </Link>
+            }
             { filters.tinkering &&
               <Link to={getPath(RubixCube)}>
                 <div className='rubix-cube project'>
