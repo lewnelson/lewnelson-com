@@ -19,6 +19,7 @@ export default class About extends Page {
   render () {
     return (
       <div id='about-page' className='page-container'>
+        <h1 className='middle'>I am Lewis Nelson, a software engineer from Scotland</h1>
         <div className='profile-image'>
           <Img
             alt='Lewis Nelson profile picture'
@@ -31,7 +32,7 @@ export default class About extends Page {
         </p>
 
         <p>
-          In my own time I enjoy tinkering with interesting tools and technologies. Anything substantial can usually be found on my <Link to={getPath(Projects)}>projects</Link> page.
+          In my own time I enjoy tinkering with interesting tools and technologies. Check out my <Link to={getPath(Projects)}>projects</Link> to see what I've been up to. Most of my code is open sourced where I am able to do it.
         </p>
       </div>
     )
