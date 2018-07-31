@@ -1,6 +1,24 @@
 @import '../constants/variables';
 
 #projects-page {
+  .filter-panel {
+    text-align: center;
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      margin: 4px 10px;
+
+      label {
+        margin-left: 8px;
+      }
+    }
+  }
+
   .projects {
     text-align: center;
 
