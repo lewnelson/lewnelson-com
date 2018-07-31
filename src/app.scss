@@ -6,6 +6,11 @@
   font-family: $main-font-family;
 }
 
+html,
+body {
+  background-color: $color-white;
+}
+
 .content-container,
 .page-container {
   max-width: 1200px;

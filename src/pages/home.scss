@@ -1,60 +1,160 @@
 @import '../constants/variables';
 
 #home-page {
-  .view-source-code-container {
-    text-align: center;
-    margin-top: 20px;
-  }
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  .page-container {
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 0;
-    transform: translate(-50%, -50%);
+  .device-container {
+    position: absolute;
     top: 50%;
     left: 50%;
-    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 900px;
 
-    h1,
-    h2 {
-      font-family: $mono-font-family;
-      text-align: center;
+    img.device {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
     }
 
-    h1 {
-      font-size: 36px;
-      margin-top: 0;
-    }
+    .laptop-container {
+      padding: 0 20%;
 
-    h2 {
-      margin-bottom: 0;
-      font-size: 28px;
-    }
-  }
+      .view-source-code-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
-  .social-links-container {
-    position: fixed;
-    bottom: 20px;
-    width: 100%;
+      .text-container {
+        text-align: center;
+        margin-top: 80px;
+      }
+
+      .social-links-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+      }
+    }
   }
 }
 
-.extra-small-device {
+@media screen and (max-width: 1000px) {
   #home-page {
-    h1 {
-      font-size: 32px;
+    .device-container {
+      width: 700px;
     }
+  }
+}
 
-    h2 {
-      font-size: 24px;
-    }
+@media screen and (max-width: 800px) {
+  #home-page {
+    .device-container {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 20px;
+      position: static;
+      transform: none;
 
-    .social-links {
-      a {
-        img {
-          width: 30px;
+      img.device {
+        display: none;
+      }
+
+      .laptop-container {
+        margin-top: 200px;
+        padding: 0;
+
+        .view-source-code-container {
+          top: 100px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .social-links-container {
+          bottom: 20px;
         }
       }
     }
   }
 }
+
+@media screen and (max-height: 400px) {
+  #home-page {
+    .device-container {
+      .laptop-container {
+        .social-links-container {
+          bottom: auto;
+          top: 380px;
+        }
+      }
+    }
+  }
+}
+
+// #home-page {
+//   .view-source-code-container {
+//     text-align: center;
+//     margin-top: 20px;
+//   }
+//
+//   .page-container {
+//     width: 100%;
+//     box-sizing: border-box;
+//     margin-top: 0;
+//     transform: translate(-50%, -50%);
+//     top: 50%;
+//     left: 50%;
+//     position: absolute;
+//
+//     h1,
+//     h2 {
+//       font-family: $mono-font-family;
+//       text-align: center;
+//     }
+//
+//     h1 {
+//       font-size: 36px;
+//       margin-top: 0;
+//     }
+//
+//     h2 {
+//       margin-bottom: 0;
+//       font-size: 28px;
+//     }
+//   }
+//
+//   .social-links-container {
+//     position: fixed;
+//     bottom: 20px;
+//     width: 100%;
+//   }
+// }
+//
+// .extra-small-device {
+//   #home-page {
+//     h1 {
+//       font-size: 32px;
+//     }
+//
+//     h2 {
+//       font-size: 24px;
+//     }
+//
+//     .social-links {
+//       a {
+//         img {
+//           width: 30px;
+//         }
+//       }
+//     }
+//   }
+// }

@@ -42,29 +42,38 @@ export class Home extends Page {
     const lines = this.lines.slice(0, linesIndex + 1)
     return (
       <div id='home-page'>
-        <div className='view-source-code-container'>
-          <SourceCodeLink
-            link='https://github.com/lewnelson/lewnelson-com'
-            title='GitHub for lewnelson.com'
+        <div className='device-container'>
+          <img
+            src='/images/device/apple-macbook-pro-15-inch.png'
+            alt='macbook pro 15 inch'
+            className='device'
           />
-        </div>
-        <div className='page-container'>
-          {
-            lines.map((line, index) => (
-              <TypeWriter
-                text={line.text}
-                key={line.text}
-                el={line.el}
-                onComplete={this.finishedLine}
-                completionDelay={line.completionDelay}
-                keepCursor={line.keepCursor}
-                complete={index < linesIndex}
+          <div className='laptop-container'>
+            <div className='view-source-code-container'>
+              <SourceCodeLink
+                link='https://github.com/lewnelson/lewnelson-com'
+                title='GitHub for lewnelson.com'
               />
-            ))
-          }
-        </div>
-        <div className='social-links-container'>
-          <SocialLinks />
+            </div>
+            <div className='text-container'>
+              {
+                lines.map((line, index) => (
+                  <TypeWriter
+                    text={line.text}
+                    key={line.text}
+                    el={line.el}
+                    onComplete={this.finishedLine}
+                    completionDelay={line.completionDelay}
+                    keepCursor={line.keepCursor}
+                    complete={index < linesIndex}
+                  />
+                ))
+              }
+            </div>
+            <div className='social-links-container'>
+              <SocialLinks />
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -132,10 +132,16 @@
 
     .fixed-navigation-wrapper {
       .fixed-navigation-container {
+        background-color: $primary-color;
+
         .navigation-bar {
-          padding: 0 15px;
-          background-color: $primary-color;
+          width: 100%;
+          margin: 0 auto;
+          max-width: 1200px;
+          padding: 0 30px;
           color: $font-color-light;
+          background-color: transparent;
+          border: none;
 
           a.item {
             padding: 20px;
