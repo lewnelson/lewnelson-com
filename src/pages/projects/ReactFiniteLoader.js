@@ -3,7 +3,7 @@ import Page from '../../containers/Page'
 import PageLoader from '../../components/PageLoader'
 import { Projects } from '../'
 import { getPath } from '../../helpers/routing'
-import { SourceCodeLink, BackTo } from '../../components'
+import { BackTo } from '../../components'
 import './reactFiniteLoader.scss'
 
 export default class ReactFiniteLoader extends Page {

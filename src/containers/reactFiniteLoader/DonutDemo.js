@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { DemoComponent } from '.'
 import { Donut } from 'react-finite-loader'
 import Slider from 'rc-slider'
 import './donutDemo.scss'

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { DemoComponent } from '.'
 import { Bar } from 'react-finite-loader'
 import './barDemo.scss'
 

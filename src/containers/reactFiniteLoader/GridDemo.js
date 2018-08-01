@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { DemoComponent } from '.'
 import { Grid } from 'react-finite-loader'
 import Slider from 'rc-slider'
 import './gridDemo.scss'

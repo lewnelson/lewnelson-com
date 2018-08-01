@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { DemoComponent } from '.'
 import { Blocks } from 'react-finite-loader'
 import Slider from 'rc-slider'
 import './blocksDemo.scss'
