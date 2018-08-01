@@ -4,8 +4,7 @@ import { allFiltersChecked } from '../selectors/projects'
 const initialState = {
   filters: {
     'professional': true,
-    'tinkering': true,
-    'non-software-related': true
+    'tinkering': true
   }
 }
 

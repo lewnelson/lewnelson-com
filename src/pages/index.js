@@ -6,7 +6,6 @@ import Projects from './Projects'
 import RubixCube from './projects/RubixCube'
 import TheCrafters from './projects/TheCrafters'
 import LouiseAnneKennedyPhotography from './projects/LouiseAnneKennedyPhotography'
-import HomeCinema from './projects/HomeCinema'
 import BordersRailwayGuide from './projects/BordersRailwayGuide'
 import HolidayExtras from './projects/HolidayExtras'
 
@@ -18,7 +17,6 @@ export {
   RubixCube,
   TheCrafters,
   LouiseAnneKennedyPhotography,
-  HomeCinema,
   BordersRailwayGuide,
   HolidayExtras
 }

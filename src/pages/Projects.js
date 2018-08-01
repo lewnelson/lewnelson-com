@@ -12,7 +12,6 @@ import {
   RubixCube,
   TheCrafters,
   LouiseAnneKennedyPhotography,
-  HomeCinema,
   BordersRailwayGuide,
   HolidayExtras
 } from '.'
@@ -66,14 +65,6 @@ export class Projects extends Page {
                 />
                 <label>Tinkering</label>
               </li>
-              <li onClick={() => this.props.toggleFilter('non-software-related')}>
-                <input
-                  type='checkbox'
-                  readOnly
-                  checked={filters['non-software-related']}
-                />
-                <label>Non-software related</label>
-              </li>
             </ul>
           </div>
           <div className='projects'>
@@ -90,14 +81,6 @@ export class Projects extends Page {
                 <div className='rubix-cube project'>
                   <div className='image-container' />
                   <p>WebGL Rubix Cube</p>
-                </div>
-              </Link>
-            }
-            { filters['non-software-related'] &&
-              <Link to={getPath(HomeCinema)}>
-                <div className='home-cinema project'>
-                  <div className='image-container' />
-                  <p>Home Cinema</p>
                 </div>
               </Link>
             }
