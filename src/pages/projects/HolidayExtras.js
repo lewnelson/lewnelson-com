@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Page from '../../containers/Page'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Projects } from '../'
@@ -7,7 +8,7 @@ import { BackTo, Img } from '../../components'
 import { isExtraSmall } from '../../selectors/device'
 import './HolidayExtras.scss'
 
-export class HolidayExtras extends Component {
+export class HolidayExtras extends Page {
   title = 'Lewis Nelson - Holiday Extras'
 
   static routerProps () {

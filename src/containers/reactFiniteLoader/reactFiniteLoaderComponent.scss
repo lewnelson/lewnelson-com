@@ -1,0 +1,100 @@
+@import '../../constants/variables';
+
+.react-finite-loader-container {
+  .inputs {
+    max-width: 500px;
+    padding: 10px;
+    background-color: $color-grey-light-5;
+    border-radius: 8px;
+    display: block;
+    margin: 10px auto;
+
+    .input-group {
+      display: block;
+      margin: 16px 0;
+
+      label {
+        font-weight: 600;
+        width: 50%;
+        display: inline-block;
+        padding-right: 8px;
+        box-sizing: border-box;
+      }
+
+      select {
+        width: 50%;
+        box-sizing: border-box;
+        border: 1px solid $color-grey-light-3;
+        border-radius: 4px;
+        padding: 8px;
+        background-color: $color-white;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      input[type="checkbox"] {
+        margin-left: 8px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .rc-slider {
+        width: 50%;
+        display: inline-block;
+
+        .rc-slider-rail {
+          background-color: $color-grey-light-3;
+        }
+
+        .rc-slider-track {
+          background-color: $primary-color;
+        }
+
+        .rc-slider-handle {
+          border-color: $primary-color;
+          background-color: $primary-color-light-2;
+        }
+      }
+
+      p.value {
+        margin: 0;
+        width: 100%;
+        margin-top: 8px;
+        padding: 4px 8px;
+        color: $primary-color;
+        background-color: $color-white;
+        border: 1px solid $color-grey-light-1;
+        text-align: center;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  .react-finite-loader {
+    display: block;
+    margin: 30px auto 0 auto;
+  }
+
+  a.view-source-code {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .actions {
+    display: flex;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+
+    .button-container {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}

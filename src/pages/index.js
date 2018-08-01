@@ -8,6 +8,7 @@ import TheCrafters from './projects/TheCrafters'
 import LouiseAnneKennedyPhotography from './projects/LouiseAnneKennedyPhotography'
 import BordersRailwayGuide from './projects/BordersRailwayGuide'
 import HolidayExtras from './projects/HolidayExtras'
+import ReactFiniteLoader from './projects/ReactFiniteLoader'
 
 export {
   About,
@@ -18,5 +19,6 @@ export {
   TheCrafters,
   LouiseAnneKennedyPhotography,
   BordersRailwayGuide,
-  HolidayExtras
+  HolidayExtras,
+  ReactFiniteLoader
 }

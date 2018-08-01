@@ -1,0 +1,39 @@
+@import '../../constants/variables';
+
+.react-finite-loader {
+  &.donut {
+    margin: 0 auto;
+
+    label {
+      color: $font-color-dark;
+
+      span.percentage {
+        opacity: 0.6;
+      }
+    }
+
+    .loaded {
+      div {
+        border-color: $primary-color;
+        box-sizing: border-box;
+      }
+    }
+
+    .unloaded {
+      border-color: $primary-color-light-3;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.donut-demo-loader-ui {
+  &.light-label {
+    .react-finite-loader {
+      &.donut {
+        label {
+          color: $font-color-light;
+        }
+      }
+    }
+  }
+}

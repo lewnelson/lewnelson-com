@@ -13,7 +13,8 @@ import {
   TheCrafters,
   LouiseAnneKennedyPhotography,
   BordersRailwayGuide,
-  HolidayExtras
+  HolidayExtras,
+  ReactFiniteLoader
 } from '.'
 
 export class Projects extends Page {
@@ -81,6 +82,14 @@ export class Projects extends Page {
                 <div className='rubix-cube project'>
                   <div className='image-container' />
                   <p>WebGL Rubix Cube</p>
+                </div>
+              </Link>
+            }
+            { filters.tinkering &&
+              <Link to={getPath(ReactFiniteLoader)}>
+                <div className='react-finite-loader project'>
+                  <div className='image-container' />
+                  <p>React finite loader</p>
                 </div>
               </Link>
             }

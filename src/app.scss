@@ -53,3 +53,27 @@ a:visited {
   text-align: center;
   display: block;
 }
+
+button {
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.primary {
+    border-color: $primary-color;
+    background-color: $primary-color;
+    color: $font-color-light;
+  }
+
+  &.secondary {
+    border-color: $primary-color;
+    background-color: $color-white;
+    color: $font-color-dark;
+  }
+}
