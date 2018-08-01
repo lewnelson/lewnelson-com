@@ -56,7 +56,7 @@ export class HolidayExtras extends Component {
             I've been working at <a href='https://www.holidayextras.co.uk/' title='Holiday Extras' target='_blank'>Holiday Extras</a> as a software engineer since August 2017. In that time I've been working on the mobile pod. Initially this meant working on the mobile web booking engine, updating the design and functionality. Our choices were heavily influenced by facts so the majority of our work was AB tested. If it lost then we'd go back to the drawing board, if it won then we'd take the idea forward and iterate on it.
           </p>
           <p>
-            We were primarily working with React on the booking engine for the UI. A lot of the state was still being handled by backbone (the original framework for the project), but laterally this shifted to redux.
+            We were primarily working with React on the booking engine for the UI. A lot of the state was still being handled by backbone (the original framework for the project), but subsequently this shifted to redux.
           </p>
           <ul className='screenshots'>
             <li
