@@ -93,6 +93,18 @@ export class Projects extends Page {
                 </div>
               </Link>
             }
+            { filters.tinkering &&
+              <a
+                href='http://swplanets.lewnelson.com/'
+                target='_blank'
+                title='Lewis Nelson - star wars planets'
+              >
+                <div className='sw-planets project'>
+                  <div className='image-container' />
+                  <p>Star Wars planets</p>
+                </div>
+              </a>
+            }
             { filters.professional &&
               <Link to={getPath(TheCrafters)}>
                 <div className='the-crafters project'>
@@ -100,6 +112,18 @@ export class Projects extends Page {
                   <p>thecrafters.co.uk</p>
                 </div>
               </Link>
+            }
+            { filters.tinkering &&
+              <a
+                href='https://github.com/lewnelson/node-userapi'
+                target='_blank'
+                title='Lewis Nelson - node user API'
+              >
+                <div className='node-user-api project'>
+                  <div className='image-container' />
+                  <p>Node user API</p>
+                </div>
+              </a>
             }
             { filters.professional &&
               <Link to={getPath(LouiseAnneKennedyPhotography)}>

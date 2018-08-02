@@ -64,9 +64,21 @@
         }
       }
 
+      &.sw-planets {
+        .image-container {
+          background-image: url('/images/projects/sw-planets.png');
+        }
+      }
+
       &.the-crafters {
         .image-container {
           background-image: url('/images/projects/the-crafters.jpg');
+        }
+      }
+
+      &.node-user-api {
+        .image-container {
+          background-image: url('/images/projects/node-user-api.png');
         }
       }
 
